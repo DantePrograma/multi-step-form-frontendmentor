@@ -1,70 +1,118 @@
-import { formItems } from "../App";
+import { useFormContext } from "react-hook-form";
+import { Inputs } from "../App";
 
-type Props = formItems & {
-  updateFormItems: (item: Partial<formItems>) => void;
-};
-
-export const StepThree = ({
-  planLength,
-  isOnlineService,
-  isLargerStorage,
-  isCustomizableProfile,
-  updateFormItems,
-}: Props) => {
+export const StepThree = () => {
+  const { watch, setValue } = useFormContext<Inputs>();
   return (
-    <>
-      <h1>Pick add-ons</h1>
-      <p>Add-ons help enhance your gaming experience.</p>
-      <div>
-        <div>
-          <label htmlFor="onlineService">
-            <h1>Online service</h1>
-            <p>Access to multiplayer games</p>
-            <p>{planLength === "monthly" ? "+$1/mo" : "+$10/yr"}</p>
+    <div className="flex flex-col gap-3">
+      <h1 className="text-3xl font-bold text-[#02295a]">Pick add-ons</h1>
+      <p className="text-[#9699ab]">
+        Add-ons help enhance your gaming experience.
+      </p>
+      <div className="flex flex-col gap-3">
+        <div
+          style={{
+            borderColor: watch().isOnlineService ? "#473dff" : "",
+            backgroundColor: watch().isOnlineService ? "#f0f6ff" : "",
+          }}
+          className="border border-[#f0f6ff] rounded-lg transition"
+        >
+          <label
+            className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
+            htmlFor="onlineService"
+          >
+            <input
+              type="checkbox"
+              id="onlineService"
+              className="accent-[#473dff] h-6 w-6"
+              onChange={() =>
+                setValue("isOnlineService", !watch().isOnlineService)
+              }
+              checked={watch().isOnlineService}
+            />
+            <div>
+              <h1 className="text-lg font-bold text-[#02295a]">
+                Online service
+              </h1>
+              <p className="text-[#9699ab] text-sm">
+                Access to multiplayer games
+              </p>
+            </div>
+            <p className="text-[#473dff]">
+              {watch().planLength === "monthly" ? "+$1/mo" : "+$10/yr"}
+            </p>
           </label>
-          <input
-            type="checkbox"
-            id="onlineService"
-            name="plan"
-            onChange={() =>
-              updateFormItems({
-                isOnlineService: !isOnlineService,
-              })
-            }
-            checked={isOnlineService}
-          />
         </div>
-        <div>
-          <label htmlFor="largeStorage">
-            <p>Larger storage</p>
-            <p>{planLength === "monthly" ? "+$2/mo" : "+$20/yr"}</p>
+        <div
+          style={{
+            borderColor: watch().isLargerStorage ? "#473dff" : "",
+            backgroundColor: watch().isLargerStorage ? "#f0f6ff" : "",
+          }}
+          className="border border-[#f0f6ff] rounded-lg transition"
+        >
+          <label
+            className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
+            htmlFor="largeStorage"
+          >
+            <input
+              type="checkbox"
+              id="largeStorage"
+              className="accent-[#473dff] h-6 w-6"
+              onChange={() =>
+                setValue("isLargerStorage", !watch().isLargerStorage)
+              }
+              checked={watch().isLargerStorage}
+            />
+            <div>
+              <h1 className="text-lg font-bold text-[#02295a]">
+                Larger storage
+              </h1>
+              <p className="text-[#9699ab] text-sm">Extra 1TB of cloud save</p>
+            </div>
+
+            <p className="text-[#473dff]">
+              {watch().planLength === "monthly" ? "+$2/mo" : "+$20/yr"}
+            </p>
           </label>
-          <input
-            type="checkbox"
-            id="largeStorage"
-            name="plan"
-            onChange={() =>
-              updateFormItems({ isLargerStorage: !isLargerStorage })
-            }
-            checked={isLargerStorage}
-          />
         </div>
-        <div>
-          <label htmlFor="customizableProfile">
-            <p>Customizable Profile</p>
-            <p>{planLength === "monthly" ? "+$2/mo" : "+$20/yr"}</p>
+        <div
+          style={{
+            borderColor: watch().isCustomizableProfile ? "#473dff" : "",
+            backgroundColor: watch().isCustomizableProfile ? "#f0f6ff" : "",
+          }}
+          className="border border-[#f0f6ff] rounded-lg transition"
+        >
+          <label
+            className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
+            htmlFor="customizableProfile"
+          >
+            <input
+              type="checkbox"
+              id="customizableProfile"
+              className="accent-[#473dff] h-6 w-6"
+              onChange={() =>
+                setValue(
+                  "isCustomizableProfile",
+                  !watch().isCustomizableProfile
+                )
+              }
+              checked={watch().isCustomizableProfile}
+            />
+            <div>
+              <h1 className="text-lg font-bold text-[#02295a]">
+                Customizable Profile
+              </h1>
+              <p className="text-[#9699ab] text-sm">
+                Custom theme on your profile
+              </p>
+            </div>
+
+            <p className="text-[#473dff]">
+              {watch().planLength === "monthly" ? "+$2/mo" : "+$20/yr"}
+            </p>
           </label>
-          <input
-            type="checkbox"
-            id="customizableProfile"
-            name="plan"
-            onChange={() =>
-              updateFormItems({ isCustomizableProfile: !isCustomizableProfile })
-            }
-            checked={isCustomizableProfile}
-          />
         </div>
       </div>
-    </>
+    </div>
   );
 };
