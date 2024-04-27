@@ -1,5 +1,4 @@
-import sideBarDesktop from "../../assets/images/bg-sidebar-desktop.svg";
-import sideBarMobile from "../../assets/images/bg-sidebar-mobile.svg";
+import "./NavBar.css";
 
 export const NavBar = ({
   windowWidth,
@@ -9,18 +8,7 @@ export const NavBar = ({
   currentStep: number;
 }) => {
   return (
-    <nav
-      style={{
-        backgroundImage: `url(${
-          windowWidth > 768 ? sideBarDesktop : sideBarMobile
-        })`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-      className="h-[16rem] md:h-full absolute md:relative p-12 md:p-7 md:pt-9 w-full flex md:flex-col font-medium gap-8 justify-center md:justify-start md:rounded-lg"
-    >
-      <img src={sideBarDesktop} alt="" />
+    <nav className="navBar h-[16rem] md:h-full absolute md:relative p-12 md:p-7 md:pt-9 w-full flex md:flex-col font-medium gap-8 justify-center md:justify-start md:rounded-lg">
       <div className="md:flex gap-3 items-center">
         <button
           style={{
