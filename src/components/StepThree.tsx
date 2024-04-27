@@ -9,27 +9,29 @@ export const StepThree = () => {
       <p className="text-[#9699ab]">
         Add-ons help enhance your gaming experience.
       </p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:gap-6">
         <div
           style={{
             borderColor: watch().isOnlineService ? "#473dff" : "",
             backgroundColor: watch().isOnlineService ? "#f0f6ff" : "",
           }}
-          className="border border-[#f0f6ff] rounded-lg transition"
+          className="border border-[#f0f6ff] rounded-lg transition hover:border-[#473dff]"
         >
           <label
             className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
             htmlFor="onlineService"
           >
-            <input
-              type="checkbox"
-              id="onlineService"
-              className="accent-[#473dff] h-6 w-6"
-              onChange={() =>
-                setValue("isOnlineService", !watch().isOnlineService)
-              }
-              checked={watch().isOnlineService}
-            />
+            <div className="flex justify-center items-center">
+              <input
+                type="checkbox"
+                id="onlineService"
+                className="accent-[#473dff] h-6 w-6"
+                onChange={() =>
+                  setValue("isOnlineService", !watch().isOnlineService)
+                }
+                checked={watch().isOnlineService}
+              />
+            </div>
             <div>
               <h1 className="text-lg font-bold text-[#02295a]">
                 Online service
@@ -48,21 +50,23 @@ export const StepThree = () => {
             borderColor: watch().isLargerStorage ? "#473dff" : "",
             backgroundColor: watch().isLargerStorage ? "#f0f6ff" : "",
           }}
-          className="border border-[#f0f6ff] rounded-lg transition"
+          className="border border-[#f0f6ff] rounded-lg transition hover:border-[#473dff]"
         >
           <label
             className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
             htmlFor="largeStorage"
           >
-            <input
-              type="checkbox"
-              id="largeStorage"
-              className="accent-[#473dff] h-6 w-6"
-              onChange={() =>
-                setValue("isLargerStorage", !watch().isLargerStorage)
-              }
-              checked={watch().isLargerStorage}
-            />
+            <div className="flex justify-center items-center">
+              <input
+                type="checkbox"
+                id="largeStorage"
+                className="accent-[#473dff] h-6 w-6"
+                onChange={() =>
+                  setValue("isLargerStorage", !watch().isLargerStorage)
+                }
+                checked={watch().isLargerStorage}
+              />
+            </div>
             <div>
               <h1 className="text-lg font-bold text-[#02295a]">
                 Larger storage
@@ -80,24 +84,26 @@ export const StepThree = () => {
             borderColor: watch().isCustomizableProfile ? "#473dff" : "",
             backgroundColor: watch().isCustomizableProfile ? "#f0f6ff" : "",
           }}
-          className="border border-[#f0f6ff] rounded-lg transition"
+          className="border border-[#f0f6ff] rounded-lg transition hover:border-[#473dff]"
         >
           <label
             className="grid grid-cols-[.7fr_5fr_1fr] gap-2 items-center p-3"
             htmlFor="customizableProfile"
           >
-            <input
-              type="checkbox"
-              id="customizableProfile"
-              className="accent-[#473dff] h-6 w-6"
-              onChange={() =>
-                setValue(
-                  "isCustomizableProfile",
-                  !watch().isCustomizableProfile
-                )
-              }
-              checked={watch().isCustomizableProfile}
-            />
+            <div className="flex justify-center items-center">
+              <input
+                type="checkbox"
+                id="customizableProfile"
+                className="accent-[#473dff] h-6 w-6"
+                onChange={() =>
+                  setValue(
+                    "isCustomizableProfile",
+                    !watch().isCustomizableProfile
+                  )
+                }
+                checked={watch().isCustomizableProfile}
+              />
+            </div>
             <div>
               <h1 className="text-lg font-bold text-[#02295a]">
                 Customizable Profile

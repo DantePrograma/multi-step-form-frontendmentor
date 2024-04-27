@@ -1,5 +1,4 @@
-import { useState } from "react";
-import sidebar from "../assets/images/bg-sidebar-mobile.svg";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { useSchema } from "./validations/useSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -77,66 +76,119 @@ function App() {
     }
   };
 
+  //Responsive design
+
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
     <FormProvider {...methods}>
       <div className="w-full h-screen grid place-items-center">
-        <div className="w-full h-screen">
+        <div className="w-full h-screen md:max-w-[1000px] md:p-3 rounded md:bg-white md:h-[700px] md:grid md:grid-cols-[270px_auto] lg:grid-cols-[320px_auto] md:place-items-center md:rounded-lg overflow-hidden">
           <nav
             style={{
-              backgroundImage: `url(${sidebar})`,
+              backgroundImage: `url(${
+                windowWidth > 768
+                  ? "../assets/images/bg-sidebar-desktop.svg"
+                  : "../assets/images/bg-sidebar-mobile.svg"
+              })`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-            className="h-[16rem] absolute p-12 w-full flex font-medium gap-8 items-start justify-center"
+            className="h-[16rem] md:h-full absolute md:relative p-12 md:p-7 md:pt-9 w-full flex md:flex-col font-medium gap-8 justify-center md:justify-start md:rounded-lg"
           >
-            <button
-              style={{
-                backgroundColor: currentStep === 0 ? "#bfe2fd" : "",
-                color: currentStep === 0 ? "#02295a" : "#bfe2fd",
-                border: "1px solid #bfe2fd",
-              }}
-              className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
-            >
-              1
-            </button>
-            <button
-              style={{
-                backgroundColor: currentStep === 1 ? "#bfe2fd" : "",
-                color: currentStep === 1 ? "#02295a" : "#bfe2fd",
-                border: "1px solid #bfe2fd",
-              }}
-              className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
-            >
-              2
-            </button>
-            <button
-              style={{
-                backgroundColor: currentStep === 2 ? "#bfe2fd" : "",
-                color: currentStep === 2 ? "#02295a" : "#bfe2fd",
-                border: "1px solid #bfe2fd",
-              }}
-              className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
-            >
-              3
-            </button>
-            <button
-              style={{
-                backgroundColor: currentStep === 3 ? "#bfe2fd" : "",
-                color: currentStep === 3 ? "#02295a" : "#bfe2fd",
-                border: "1px solid #bfe2fd",
-              }}
-              className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
-            >
-              4
-            </button>
+            <div className="md:flex gap-3 items-center">
+              <button
+                style={{
+                  backgroundColor: currentStep === 0 ? "#bfe2fd" : "",
+                  color: currentStep === 0 ? "#02295a" : "#bfe2fd",
+                  border: "1px solid #bfe2fd",
+                }}
+                className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
+              >
+                1
+              </button>
+              {windowWidth > 768 && (
+                <div>
+                  <p className="text-[#d6d9e6]">STEP 1</p>
+                  <h1 className="text-white font-bold">YOUR INFO</h1>
+                </div>
+              )}
+            </div>
+            <div className="md:flex gap-3 items-center">
+              <button
+                style={{
+                  backgroundColor: currentStep === 1 ? "#bfe2fd" : "",
+                  color: currentStep === 1 ? "#02295a" : "#bfe2fd",
+                  border: "1px solid #bfe2fd",
+                }}
+                className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
+              >
+                2
+              </button>
+              {windowWidth > 768 && (
+                <div>
+                  <p className="text-[#d6d9e6]">STEP 2</p>
+                  <h1 className="text-white font-bold">SELECT PLAN</h1>
+                </div>
+              )}
+            </div>
+
+            <div className="md:flex gap-3 items-center">
+              <button
+                style={{
+                  backgroundColor: currentStep === 2 ? "#bfe2fd" : "",
+                  color: currentStep === 2 ? "#02295a" : "#bfe2fd",
+                  border: "1px solid #bfe2fd",
+                }}
+                className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
+              >
+                3
+              </button>
+              {windowWidth > 768 && (
+                <div>
+                  <p className="text-[#d6d9e6]">STEP 3</p>
+                  <h1 className="text-white font-bold">ADD-ONS</h1>
+                </div>
+              )}
+            </div>
+
+            <div className="md:flex gap-3 items-center">
+              <button
+                style={{
+                  backgroundColor: currentStep === 3 ? "#bfe2fd" : "",
+                  color: currentStep === 3 ? "#02295a" : "#bfe2fd",
+                  border: "1px solid #bfe2fd",
+                }}
+                className="text-[#bfe2fd] rounded-full h-10 w-10 transition"
+              >
+                4
+              </button>
+              {windowWidth > 768 && (
+                <div>
+                  <p className="text-[#d6d9e6]">STEP 4</p>
+                  <h1 className="text-white font-bold">SUMMARY</h1>
+                </div>
+              )}
+            </div>
           </nav>
-          <div className="w-full">
+          <div className="w-full md:h-full md:bg-white">
             <form
-              className="w-full px-2 max-w-xl rounded-lg relative top-32 mx-auto"
+              className="w-full md:h-full px-2 md:px-0 max-w-xl md:pb-3 md:pt-6 rounded-lg relative md:static md:flex md:justify-between md:flex-col top-32 mx-auto"
               onSubmit={methods.handleSubmit(onSubmit)}
             >
-              <div className="bg-white rounded-lg px-5 py-6 shadow-2xl mb-8">
+              <div className="bg-white rounded-lg md:rounded-none px-5 py-6 shadow-2xl md:shadow-none mb-8">
                 {currentStep === 0 && <StepOne />}
 
                 {currentStep === 1 && <StepTwo />}
@@ -147,12 +199,11 @@ function App() {
 
                 {currentStep === 4 && <Finish />}
               </div>
-
-              <div className="flex gap-8 mt-auto">
+              <div className="flex items-center justify-between gap-8 mt-auto fixed bottom-0 max-w-xl p-5 bg-[#f0f6ff] md:bg-white w-full md:static">
                 {currentStep !== 0 && currentStep !== steps.length && (
                   <button
                     type="button"
-                    className="text-[#02295a] font-medium"
+                    className="text-[#9699ab] font-medium"
                     onClick={goBack}
                   >
                     Go Back
@@ -160,8 +211,11 @@ function App() {
                 )}
 
                 {currentStep !== steps.length && (
-                  <button onClick={goForward}>
-                    {currentStep === steps.length - 1 ? "Submit" : "Next Step"}
+                  <button
+                    className="bg-[#473dff] text-white rounded px-5 py-2"
+                    onClick={goForward}
+                  >
+                    {currentStep === steps.length - 1 ? "Confirm" : "Next Step"}
                   </button>
                 )}
               </div>

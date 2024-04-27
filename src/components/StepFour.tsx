@@ -29,11 +29,11 @@ export const StepFour = () => {
       <p className="text-[#9699ab]">
         Double-check everything looks OK before confirming.
       </p>
-      <div className="bg-[#f0f6ff] rounded-lg p-5">
+      <div className="bg-[#f0f6ff] rounded-lg p-5 md:p-8">
         <div
           style={{
             borderBottom: checkBorder ? "1px solid #d7d7d7" : "",
-            paddingBottom: checkBorder ? "12px" : "",
+            paddingBottom: checkBorder ? "24px" : "",
           }}
           className="flex justify-between items-center"
         >
@@ -63,8 +63,8 @@ export const StepFour = () => {
           </div>
         </div>
         <div
-          style={{ paddingTop: checkBorder ? "12px" : "" }}
-          className="flex flex-col gap-2"
+          style={{ paddingTop: checkBorder ? "24px" : "" }}
+          className="flex flex-col gap-6"
         >
           {watch().isOnlineService && (
             <div className="flex justify-between">
@@ -106,7 +106,7 @@ export const StepFour = () => {
       </div>
       <div className="flex justify-between items-center p-4">
         <p className="text-[#9699ab]">
-          Total per {watch().planLength === "monthly" ? "month" : "year"}
+          Total (per {watch().planLength === "monthly" ? "month" : "year"})
         </p>
         <p className="text-[#473dff] text-xl font-bold">
           ${addOnTotal + planOptions[watch().plan][watch().planLength]}

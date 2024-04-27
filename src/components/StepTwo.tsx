@@ -12,16 +12,16 @@ export const StepTwo = () => {
       <p className="text-[#9699ab]">
         You have the option of monthly or yearly billing.
       </p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col md:justify-between md:flex-row md:min-h-[220px] gap-3">
         <div
           style={{
             borderColor: watch().plan === "Arcade" ? "#473dff" : "",
             backgroundColor: watch().plan === "Arcade" ? "#f0f6ff" : "",
           }}
-          className="transition border rounded-lg flex gap-3"
+          className="transition border rounded-lg flex gap-3 w-full"
         >
           <label
-            className="flex gap-3 items-start w-full cursor-pointer p-4"
+            className="flex md:flex-col md:justify-between gap-3 items-start w-full cursor-pointer p-4"
             htmlFor="arcade"
           >
             <img className="pt-2" src={arcadeIcon} alt="arcade icon" />
@@ -51,10 +51,10 @@ export const StepTwo = () => {
             borderColor: watch().plan === "Advanced" ? "#473dff" : "",
             backgroundColor: watch().plan === "Advanced" ? "#f0f6ff" : "",
           }}
-          className="transition border rounded-lg flex gap-3"
+          className="transition border rounded-lg flex gap-3 w-full"
         >
           <label
-            className="flex gap-3 items-start w-full cursor-pointer p-4"
+            className="flex md:flex-col md:justify-between gap-3 items-start w-full cursor-pointer p-4"
             htmlFor="advanced"
           >
             <img className="pt-2" src={advancedIcon} alt="advanced icon" />
@@ -83,10 +83,10 @@ export const StepTwo = () => {
             borderColor: watch().plan === "Pro" ? "#473dff" : "",
             backgroundColor: watch().plan === "Pro" ? "#f0f6ff" : "",
           }}
-          className="transition border rounded-lg flex gap-3"
+          className="transition border rounded-lg flex gap-3 w-full"
         >
           <label
-            className="flex gap-3 items-start w-full cursor-pointer p-4"
+            className="flex md:flex-col md:justify-between gap-3 items-start w-full cursor-pointer p-4"
             htmlFor="pro"
           >
             <img className="pt-2" src={proIcon} alt="pro icon" />
