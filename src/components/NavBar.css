@@ -2,3 +2,10 @@
   background: url("../../assets/images/bg-sidebar-desktop.svg") no-repeat center /
     cover;
 }
+
+@media (min-width: 768px) {
+  .navBar {
+    background: url("../../assets/images/bg-sidebar-mobile.svg") no-repeat
+      center / cover;
+  }
+}
