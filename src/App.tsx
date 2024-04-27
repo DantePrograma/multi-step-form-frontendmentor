@@ -8,6 +8,8 @@ import { StepTwo } from "./components/StepTwo";
 import { StepThree } from "./components/StepThree";
 import { StepFour } from "./components/StepFour";
 import { Finish } from "./components/Finish";
+import sideBarDesktop from "../assets/images/bg-sidebar-desktop.svg";
+import sideBarMobile from "../assets/images/bg-sidebar-mobile.svg";
 
 const steps = [
   {
@@ -98,9 +100,7 @@ function App() {
           <nav
             style={{
               backgroundImage: `url(${
-                windowWidth > 768
-                  ? "../assets/images/bg-sidebar-desktop.svg"
-                  : "../assets/images/bg-sidebar-mobile.svg"
+                windowWidth > 768 ? sideBarDesktop : sideBarMobile
               })`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
