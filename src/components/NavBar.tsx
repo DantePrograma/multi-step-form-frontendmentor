@@ -20,6 +20,7 @@ export const NavBar = ({
       }}
       className="h-[16rem] md:h-full absolute md:relative p-12 md:p-7 md:pt-9 w-full flex md:flex-col font-medium gap-8 justify-center md:justify-start md:rounded-lg"
     >
+      <img src={sideBarDesktop} alt="" />
       <div className="md:flex gap-3 items-center">
         <button
           style={{
