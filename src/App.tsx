@@ -117,7 +117,7 @@ function App() {
                 {currentStep !== 0 && currentStep !== steps.length && (
                   <button
                     type="button"
-                    className="text-[#9699ab] font-medium"
+                    className="text-[#9699ab] font-medium hover:text-black transition-all"
                     onClick={goBack}
                   >
                     Go Back
